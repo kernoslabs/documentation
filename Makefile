@@ -14,5 +14,9 @@ requirements:
 install: requirements
 	@echo "Installing enviroment..."
 	@python3 -m venv $(VENV_DIR)
-	@source $(VENV_DIR)/bin/activate
-	@pip install -r requirements.txt
+	@echo "Activating virtualenv" && \
+	source "$(VENV_DIR)/bin/activate" && \
+	echo "Installing python packages required" && \
+	pip install -r requirements.txt && \
+	echo "Deactivating virtualenv" && \
+	deactivate
