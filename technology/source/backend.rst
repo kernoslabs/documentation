@@ -6,4 +6,5 @@ Section used to store documentation related to every backend programming languag
 .. toctree::
    :maxdepth: 1
 
+   backend/golang
    backend/ruby
