@@ -6,7 +6,7 @@ Internals
 
 An array in Go is a fixed-length data type that contains a contiguous block of element of the same type. Each element contains the same type, in this case an integer, and can be accessed through a unique index position.
 
-.. image:: images/golang/01-array.png
+.. image:: /images/golang/01-array.png
 
 Arrays are valuable data structures because the memory is allocated sequentially. Using index arithmetic, you can iterate through all the elements of an array quickly. The type information for the array provides the distance in memory you have to move to find each element. Since each element is of the same type and follows each other sequentially, moving throught the array is consistent and fast.
 
