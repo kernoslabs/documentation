@@ -7,7 +7,7 @@ Internals
 An array in Go is a fixed-length data type that contains a contiguous block of element of the same type. Each element contains the same type, in this case an integer, and can be accessed through a unique index position.
 
 .. image:: /images/golang/01-array.png
-    :align: center
+    :align: left
 
 Arrays are efficient data structures because the memory is allocated sequentially. Using index arithmetic, you can iterate through all the elements of an array quickly. The type information for the array provides the distance in memory you have to move to find each element. Since each element is of the same type and follows each other sequentially, moving throught the array is consistent and fast.
 
@@ -26,14 +26,14 @@ When variables in Go are declared, they are always initialized to their zero val
 .. table:: 
    :align: center
 
-======= ==========
-Type    Zero value
-======= ==========
-string  ""
-int     0
-pointer nil
-bool    false
-======= ==========
+    ======= ==========
+    Type    Zero value
+    ======= ==========
+    string  ""
+    int     0
+    pointer nil
+    bool    false
+    ======= ==========
 
 .. code-block:: golang
 
@@ -64,9 +64,7 @@ Working with arrays
 
 To access an individual element, use the **[ ]** operator.
 
-.. todo:: 
-
-    Accessing array elements
+.. todo:: Accessing array elements
 
 .. code-block:: golang
 
@@ -80,9 +78,7 @@ To access an individual element, use the **[ ]** operator.
 .. image:: /images/golang/02-array.png
     :align: center
 
-.. todo:: 
-
-    Accessing array pointer elements
+.. todo:: Accessing array pointer elements
 
 .. code-block:: golang
 
@@ -100,9 +96,7 @@ You use the **\*** operator to access the value that each element pointer points
 
 An array is a value in Go. This means you can use it in an assignment operation. The variable name denotes the entire array and, therefore, an array can be assigned to other arrays of the same type. The type of an array variable includes both the length and the type of data that can be stored in each element. Only arrays of the same type can be assigned.
 
-.. todo:: 
-
-    Assigning one array to another of the same type
+.. todo:: Assigning one array to another of the same type
 
 .. code-block:: golang
 
@@ -114,9 +108,7 @@ An array is a value in Go. This means you can use it in an assignment operation.
     // Copy the values from array2 into array1.
     array1 = array2
 
-.. todo:: 
-    
-    Assigning one array of pointers to another
+.. todo:: Assigning one array of pointers to another
 
 .. code-block:: golang
 
