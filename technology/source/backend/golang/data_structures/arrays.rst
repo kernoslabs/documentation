@@ -64,19 +64,19 @@ Working with arrays
 
 To access an individual element, use the **[ ]** operator.
 
-.. topic:: Accessing array elements
+`Accessing array elements`
 
-.. code-block:: golang
-
-    // Declare an integer array of five elements.
-    // Initialize each element with a specific value.
-    array := [5]int{10, 20, 30, 40, 50}
-
-    // Change the value at index 2.
-    array[2] = 35
-
-.. image:: /images/golang/02-array.png
-    :align: center
+    .. code-block:: golang
+    
+        // Declare an integer array of five elements.
+        // Initialize each element with a specific value.
+        array := [5]int{10, 20, 30, 40, 50}
+    
+        // Change the value at index 2.
+        array[2] = 35
+    
+    .. image:: /images/golang/02-array.png
+        :align: center
 
 .. todo:: Accessing array pointer elements
 
