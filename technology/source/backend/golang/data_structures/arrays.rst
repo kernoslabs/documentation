@@ -15,7 +15,6 @@ Declaring and initializing
 --------------------------
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer array of five elements
     var array [5]int   <>   array := [5]int{}
@@ -23,6 +22,9 @@ Declaring and initializing
 Once an array is declared, neither the type of data being stored nor its length can be changed.
 
 When variables in Go are declared, they are always initialized to their zero value for their respective type, and arrays are not different. When an array is initialized, each individual element that belongs to the array is initialized to its zero value.
+
+.. table:: 
+   :align: center
 
 ======= ==========
 Type    Zero value
@@ -34,7 +36,6 @@ bool    false
 ======= ==========
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer array of five elements.
     // Inicialize each element with a specific value.
@@ -43,7 +44,6 @@ bool    false
 If the length is given as *...*, Go will identify the lenght of the array based on the number of elements that are inicialized.
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer array of five elements.
     // Inicialize each element with a specific value.
@@ -53,7 +53,6 @@ If the length is given as *...*, Go will identify the lenght of the array based 
 Go allows us to inicialize specific elements of the array.
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer array of five elements.
     // Inicialize index 1 and 2 with a specific value.
@@ -65,10 +64,11 @@ Working with arrays
 
 To access an individual element, use the **[ ]** operator.
 
-.. todo:: Accessing array elements
+.. todo:: 
+
+    Accessing array elements
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer array of five elements.
     // Initialize each element with a specific value.
@@ -80,10 +80,11 @@ To access an individual element, use the **[ ]** operator.
 .. image:: /images/golang/02-array.png
     :align: center
 
-.. todo:: Accessing array pointer elements
+.. todo:: 
+
+    Accessing array pointer elements
 
 .. code-block:: golang
-    :linenos:
 
     // Declare an integer pointer array of five elements.
     // Initialize index 0 and 1 of the array with integer pointers.
@@ -99,10 +100,11 @@ You use the **\*** operator to access the value that each element pointer points
 
 An array is a value in Go. This means you can use it in an assignment operation. The variable name denotes the entire array and, therefore, an array can be assigned to other arrays of the same type. The type of an array variable includes both the length and the type of data that can be stored in each element. Only arrays of the same type can be assigned.
 
-.. todo:: Assigning one array to another of the same type
+.. todo:: 
+
+    Assigning one array to another of the same type
 
 .. code-block:: golang
-    :linenos:
 
     // Declare a string array of five elements. var array1 [5]string
     // Declare a second string array of five elements.
@@ -112,13 +114,16 @@ An array is a value in Go. This means you can use it in an assignment operation.
     // Copy the values from array2 into array1.
     array1 = array2
 
-.. todo:: Assigning one array of pointers to another
+.. todo:: 
+    
+    Assigning one array of pointers to another
 
 .. code-block:: golang
-    :linenos:
 
-    // Declare a string pointer array of three elements. var array1 [3]*string
-    // Declare a second string pointer array of three elements. // Initialize the array with string pointers.
+    // Declare a string pointer array of three elements.
+    var array1 [3]*string
+    // Declare a second string pointer array of three elements.
+    // Initialize the array with string pointers.
     array2 := [3]*string{new(string), new(string), new(string)}
 
     // Add colors to each element
