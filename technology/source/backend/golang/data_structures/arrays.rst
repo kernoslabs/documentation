@@ -14,7 +14,7 @@ Arrays are efficient data structures because the memory is allocated sequentiall
 Declaring and initializing
 --------------------------
 
-.. code-block:: golang
+.. highlight:: golang
 
     // Declare an integer array of five elements
     var array [5]int   <>   array := [5]int{}
