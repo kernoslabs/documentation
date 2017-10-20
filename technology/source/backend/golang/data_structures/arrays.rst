@@ -64,7 +64,7 @@ Working with arrays
 
 To access an individual element, use the **[ ]** operator.
 
-.. todo:: Accessing array elements
+.. topic:: Accessing array elements
 
 .. code-block:: golang
 
