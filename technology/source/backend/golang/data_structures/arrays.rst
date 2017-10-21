@@ -116,7 +116,7 @@ An array is a value in Go. This means you can use it in an assignment operation.
         // Copy the values from array2 into array1.
         array1 = array2
 
-    After the copy, you have two arrays with identical values
+    After the copy, you have two arrays with identical values.
 
 **Assigning one array of pointers to another**
 
@@ -129,9 +129,9 @@ An array is a value in Go. This means you can use it in an assignment operation.
         array2 := [3]*string{new(string), new(string), new(string)}
 
         // Add colors to each element
-        \*array2[0] = "Red"
-        \*array2[1] = "Blue"
-        \*array2[2] = "Green"
+        *array2[0] = "Red"
+        *array2[1] = "Blue"
+        *array2[2] = "Green"
 
         // Copy the values from array2 into array1.
         array1 = array2
