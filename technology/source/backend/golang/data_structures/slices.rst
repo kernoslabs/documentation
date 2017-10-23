@@ -17,7 +17,7 @@ Declaring and initializing
 There are several ways to create and initialize slices in Go. Knowing the capacity you need ahead of time will usually determine how you go about creating your slice.
 
 MAKE AND SLICE LITERALS
-***********************
+^^^^^^^^^^^^^^^^^^^^^^^
 
 One way to create a slice is to use the built-in function ``make``. When you use ``make``, two options you have are the length and the capacity of the slice. When you just specify the length, the capacity of the slice is the same.
 
@@ -64,7 +64,7 @@ When using a slice literal, you can set the initial length and capacity. All you
 if you specify a value inside the ``[ ]`` operator, you’re creating an array. If you don’t specify a value, you’re creating a slice.
 
 NIL AND EMPTY SLICES
-********************
+^^^^^^^^^^^^^^^^^^^^
 
 A *nil slice* is the most common way you create slices in Go. They can be used with many of the standard library and built-in functions that work with slices. They are useful when you want to represent a slice that doesn’t exist.
 
@@ -97,7 +97,7 @@ Working with slices
 -------------------
 
 ASSIGNING AND SLICING
-*********************
+^^^^^^^^^^^^^^^^^^^^^
 
 *Assigning* a value to any specific index within a slice is identical to how you do this with arrays. To change the value of an individual element, use the ``[ ]`` operator.
 
@@ -124,7 +124,7 @@ ASSIGNING AND SLICING
 
     For slice[i:j] with an underlying array of capacity k
 
-    Length: j - i 
+    Length: j - i
     Capacity: k - i
 
 If you apply this formula to *newSlice* you get the following.
@@ -133,8 +133,18 @@ If you apply this formula to *newSlice* you get the following.
 
     For slice[1:3] with an underlying array of capacity 5
 
-    Length: 3 - 1 = 2 
+    Length: 3 - 1 = 2
     Capacity: 5 - 1 = 4
+
+Now you have two slices sharing the same underlying array. Changes made to the shared section of the underlying array by one slice can be seen by the other slice. A slice can only access indexes up to its length. Trying to access an element outside of its length will cause a runtime exception. The elements associated with a slice’s capacity are only available for growth. They must be incorporated into the slice’s length before they can be used.
+
+.. image:: /images/golang/05-slice.png
+   :align: left
+
+GROWING SLICES
+^^^^^^^^^^^^^^
+
+
 
 Passing arrays between functions
 --------------------------------
