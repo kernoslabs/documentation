@@ -95,9 +95,10 @@ To access an individual element, use the ``[ ]`` operator.
         array := [5]*int{0: new(int), 1: new(int)}
 
         // Assign values to index 0 and 1.
-        *array[0] = 10 *array[1] = 20
+        *array[0] = 10 
+        *array[1] = 20
 
-    .. image:: /images/golang/02-array.png
+    .. image:: /images/golang/03-array.png
         :align: center
 
 You use the ``*`` operator to access the value that each element pointer points to.
