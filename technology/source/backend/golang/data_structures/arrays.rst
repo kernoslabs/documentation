@@ -95,9 +95,10 @@ To access an individual element, use the ``[ ]`` operator.
         array := [5]*int{0: new(int), 1: new(int)}
 
         // Assign values to index 0 and 1.
-        *array[0] = 10 *array[1] = 20
+        *array[0] = 10 
+        *array[1] = 20
 
-    .. image:: /images/golang/02-array.png
+    .. image:: /images/golang/03-array.png
         :align: center
 
 You use the ``*`` operator to access the value that each element pointer points to.
@@ -108,7 +109,8 @@ An array is a value in Go. This means you can use it in an assignment operation.
 
     .. code-block:: go
 
-        // Declare a string array of five elements. var array1 [5]string
+        // Declare a string array of five elements.
+        var array1 [5]string
         // Declare a second string array of five elements.
         // Initialize the array with colors.
         array2 := [5]string{"Red", "Blue", "Green", "Yellow", "Pink"}
