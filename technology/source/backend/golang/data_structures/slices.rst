@@ -16,8 +16,8 @@ Declaring and initializing
 
 There are several ways to create and initialize slices in Go. Knowing the capacity you need ahead of time will usually determine how you go about creating your slice.
 
-MAKE AND SLICE LITERALS
-^^^^^^^^^^^^^^^^^^^^^^^
+MAKE
+^^^^
 
 One way to create a slice is to use the built-in function ``make``. When you use ``make``, two options you have are the length and the capacity of the slice. When you just specify the length, the capacity of the slice is the same.
 
@@ -36,6 +36,9 @@ One way to create a slice is to use the built-in function ``make``. When you use
         // Create a slice of integers.
         // Contains a length of 3 and has a capacity of 5 elements.
         slice := make([]int, 3, 5)
+
+SLICE LITERALS
+^^^^^^^^^^^^^^
 
 An idiomatic way of creating a slice is to use a slice literal. It’s similar to creating an array, except you don’t specify a value inside of the ``[ ]`` operator. The initial length and capacity will be based on the number of elements you initialize.
 
@@ -63,8 +66,8 @@ When using a slice literal, you can set the initial length and capacity. All you
 
 if you specify a value inside the ``[ ]`` operator, you’re creating an array. If you don’t specify a value, you’re creating a slice.
 
-NIL AND EMPTY SLICES
-^^^^^^^^^^^^^^^^^^^^
+NIL SLICES
+^^^^^^^^^^
 
 A *nil slice* is the most common way you create slices in Go. They can be used with many of the standard library and built-in functions that work with slices. They are useful when you want to represent a slice that doesn’t exist.
 
@@ -77,6 +80,9 @@ A *nil slice* is the most common way you create slices in Go. They can be used w
 
     .. image:: /images/golang/02-slice.png
        :align: left
+
+EMPTY SLICES
+^^^^^^^^^^^^
 
 You can also create an *empty slice* by declaring a slice with initialization. An *empty slice* contains a zero-element underlying array that allocates no storage. *Empty slices* are useful when you want to represent an empty collection, such as when a database query returns zero results.
 
@@ -96,10 +102,13 @@ You can also create an *empty slice* by declaring a slice with initialization. A
 Working with slices
 -------------------
 
-ASSIGNING AND SLICING
-^^^^^^^^^^^^^^^^^^^^^
+ASSIGNING
+^^^^^^^^^
 
 *Assigning* a value to any specific index within a slice is identical to how you do this with arrays. To change the value of an individual element, use the ``[ ]`` operator.
+
+SLICING
+^^^^^^^
 
 *Slices* are called such because you can slice a portion of the underlying array to create a new slice.
 
@@ -144,6 +153,23 @@ Now you have two slices sharing the same underlying array. Changes made to the s
 GROWING SLICES
 ^^^^^^^^^^^^^^
 
+Having capacity is great and Go allows you to use the built-in function ``append`` to incorporate it into your slice's length.
+
+To use ``append``, you need a source slice and a value that is to be appended. When your ``append`` call returns, it provides you a new slice with the changes. The ``append`` function will always increase the length of the new slice. The capacity, on the other hand, may or may not be affected, depending on the available capacity of the source slice.
+
+.. code-block:: go
+
+    // Create a slice of integers.
+    // Contains a length and capacity of 5 elements.
+    slice := []int{10, 20, 30, 40, 50}
+
+    // Create a new slice.
+    // Contains a length of 2 and capacity of 4 elements.
+    newSlice := slice[1:3]
+
+    // Allocate a new element from capacity.
+    // Assign the value of 60 to the new element.
+    newSlice = append(newSlice, 60)
 
 
 Passing arrays between functions
