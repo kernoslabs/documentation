@@ -8,3 +8,4 @@ Go has three different data structures that allow you to manage collections of d
 
    data_structures/arrays
    data_structures/slices
+   data_structures/maps

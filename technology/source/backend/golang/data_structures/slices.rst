@@ -31,7 +31,7 @@ One way to create a slice is to use the built-in function ``make``. When you use
 
 **Declaring a slice of strings by length and capacity**
 
-    .. code-block: go
+    .. code-block:: go
 
         // Create a slice of integers.
         // Contains a length of 3 and has a capacity of 5 elements.
@@ -155,22 +155,117 @@ GROWING SLICES
 
 Having capacity is great and Go allows you to use the built-in function ``append`` to incorporate it into your slice's length.
 
-To use ``append``, you need a source slice and a value that is to be appended. When your ``append`` call returns, it provides you a new slice with the changes. The ``append`` function will always increase the length of the new slice. The capacity, on the other hand, may or may not be affected, depending on the available capacity of the source slice.
+To use ``append``, you need a source slice and a value that is to be appended. When your ``append`` call returns, if the capacity is reached in the underlying array for a slice, it will create a new underlying array, copy the existing values that are being referenced, and provide you the new value; else it will just incorporate the available element into the slice's length and assign the value. The ``append`` function will always increase the length of the new slice. The capacity, on the other hand, may or may not be affected, depending on the available capacity of the source slice.
 
-.. code-block:: go
+**Using *append* to add an element to a slice**
 
-    // Create a slice of integers.
-    // Contains a length and capacity of 5 elements.
-    slice := []int{10, 20, 30, 40, 50}
+    .. code-block:: go
 
-    // Create a new slice.
-    // Contains a length of 2 and capacity of 4 elements.
-    newSlice := slice[1:3]
+        // Create a slice of integers.
+        // Contains a length and capacity of 5 elements.
+        slice := []int{10, 20, 30, 40, 50}
 
-    // Allocate a new element from capacity.
-    // Assign the value of 60 to the new element.
-    newSlice = append(newSlice, 60)
+        // Create a new slice.
+        // Contains a length of 2 and capacity of 4 elements.
+        newSlice := slice[1:3]
 
+        // Allocate a new element from capacity.
+        // Assign the value of 60 to the new element.
+        newSlice = append(newSlice, 60)
+
+    .. image:: /images/golang/06-slice.png
+       :align: left
+
+**Using *append* to increase the length and capacity of a slice**
+
+    .. code-block:: go
+
+        // Create a slice of integers.
+        // Contains a length and capacity of 4 elements.
+        slice := []int{10, 20, 30, 40}
+
+        // Append a new value to the slice.
+        // Assign the value of 50 to the new element.
+        newSlice := append(slice, 50)
+
+    After this ``append`` operation, newSlice is given its own underlying array, and the capacity of the array is doubled from its original size.
+
+    .. image:: /images/golang/07-slice.png
+       :align: left
+
+Capacity is always doubled when the existing capacity of the slice is under 1,000 elements. Once the number of elements goes over 1,000, the capacity is grown by a factor of 1.25, or 25%.
+
+THREE INDEX SLICES
+^^^^^^^^^^^^^^^^^^
+
+There’s a third index option when you are slicing. This third index gives you control over the capacity of the new slice. The purpose is not to increase capacity, but to restrict the capacity. Being able to restrict the capacity of a new slice provides a level of protection to the underlying array and gives you more control over append operations.
+
+**Performing a three-index slice**
+
+    .. code-block:: go
+
+        // Create a slice of strings.
+        // Contains a length and capacity of 5 elements.
+        source := []string{"Apple", "Orange", "Plum", "Banana", "Grape"}
+
+        // Slice the third element and restrict the capacity.
+        // Contains a length of 1 element and capacity of 2 elements.
+        slice := source[2:3:4]
+
+    .. image:: /images/golang/08-slice.png
+       :align: left
+
+**How length and capacity are calculated**
+
+    For slice[i:j:k]    or  [2:3:4]
+
+    Length: j - i       or  3 - 2 = 1
+    Capacity: k - i     or  4 - 2 = 2
+
+If you attempt to set a capacity that’s larger than the available capacity, you’ll get a runtime error. By having the option to set the capacity of a new slice to be the same as the length, you can force the first append operation to detach the new slice from the underlying array. Detaching the new slice from its original source array makes it safe to change.
+
+**Benefits of setting length and capacity to be the same**
+
+    .. code-block:: go
+
+        // Create a slice of strings.
+        // Contains a length and capacity of 5 elements.
+        source := []string{"Apple", "Orange", "Plum", "Banana", "Grape"}
+
+        // Slice the third element and restrict the capacity.
+        // Contains a length and capacity of 1 element.
+        slice := source[2:3:3]
+
+        // Append a new string to the slice.
+        slice = append(slice, "Kiwi")
+
+    Without this third index, appending *Kiwi* to our slice would’ve changed the value of *Banana* in index 3 of the underlying array, because all of the remaining capacity would still belong to the slice. But we have restricted the capacity of the slice to 1. When we call ``append`` for the first time on the slice, it will create a new underlying array of two elements, copy the fruit *Plum*, add the new fruit *Kiwi*, and return a new slice that references this underlying array,
+
+    .. image:: /images/golang/09-slice.png
+       :align: left
+
+The built-in function ``append`` is also a variadic function. This means you can pass multiple values to be appended in a single slice call. If you use the ... operator, you can append all the elements of one slice into another.
 
 Passing arrays between functions
 --------------------------------
+
+Passing a slice between two functions requires nothing more than passing the slice by value. Since the size of a slice is small, it’s cheap to copy and pass between functions. On a 64-bit architecture, a slice requires 24 bytes of memory. The pointer field requires 8 bytes, and the length and capacity fields require 8 bytes respectively. Only the slice is being copied, not the underlying array.
+
+**Passing slices between functions**
+
+    .. code-block:: go
+
+        // Allocate a slice of 1 million integers.
+        slice := make([]int, 1e6)
+
+        // Pass the slice to the function foo.
+        slice = foo(slice)
+
+        // Function foo accepts a slice of integers and returns the slice back.
+        func foo(slice []int) []int {
+            ...
+            return slice
+        }
+
+    .. image:: /images/golang/10-slice.png
+       :align: left
