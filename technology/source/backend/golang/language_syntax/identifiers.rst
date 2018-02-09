@@ -6,7 +6,8 @@ Go identifiers
 * Identifiers support the Unicode character set
 * The first position of an identifier must be a letter or an underscore::
 
-    // Go programming language specification
+    // GO PROGRAMMING LANGUAGE SPECIFICATION
+
     identifier     = letter { letter | unicode_digit  } .
 
     letter         = unicode_letter | "_" .
@@ -30,10 +31,15 @@ Go comes with a number of built-in identifiers. They fall into different categor
 | Category     | Identifier                                     |
 +==============+================================================+
 |              | ``int8``, ``int16``, ``int32``, ``int64``      |
+|              +------------------------------------------------+
 |              | ``uint8``, ``uint16``, ``uint32``, ``uint64``  |
-| Numeric      | ``float32``, ``float64``                       |
+|              +------------------------------------------------+
+|              | ``float32``, ``float64``                       |
+| Numeric      +------------------------------------------------+
 |              | ``complex64``, ``complex128``                  |
+|              +------------------------------------------------+
 |              | ``int``, ``uint``, ``uintptr``                 |
+|              +------------------------------------------------+
 |              | ``byte``, ``rune``                             |
 +--------------+------------------------------------------------+
 | String       | ``string``                                     |
@@ -64,7 +70,7 @@ Go comes with a number of built-in identifiers. They fall into different categor
 +------------------+---------------------------------------------------+
 | Collections      | ``append()``, ``cap()``, ``copy()``, ``delete()`` |
 +------------------+---------------------------------------------------+
-| Complex numbers  | ``complex()``, ``imag()``, ``real()``                                           |
+| Complex numbers  | ``complex()``, ``imag()``, ``real()``             |
 +------------------+---------------------------------------------------+
 | Error Handling   | ``panic()``, ``recover()``                        |
 +------------------+---------------------------------------------------+
@@ -77,17 +83,19 @@ The Go compiler is particularly strict about the use of declared identifiers for
 Go allows you to turn off this behavior using the blank identifier, represented by the ``_`` (underscore) character. Any declaration or assignment that uses the blank identifier is not bound to any value and is ignored at compile time. The blank identifier is usually used in two contexts:
 
 **Muting package imports**
-    When a package declaration is preceded by an underscore, the compiler allows the package to be declared without any further referenced usage.
 
-.. code-block:: go
+When a package declaration is preceded by an underscore, the compiler allows the package to be declared without any further referenced usage.
+
+    .. code-block:: go
 
         import "fmt"
         import "strings"
         import _ "log"
 
 **Muting unwanted function results**
-     When a Go function call returns multiple values, each value in the return list must be assigned to a variable identifier. In some cases, however, it may be desirable to mute unwanted results from the return list while keeping others.
 
-.. code-block:: go
+When a Go function call returns multiple values, each value in the return list must be assigned to a variable identifier. In some cases, however, it may be desirable to mute unwanted results from the return list while keeping others.
+
+    .. code-block:: go
 
         _, execFile := filepath.Split("/opt/data.txt")
