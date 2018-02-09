@@ -1,13 +1,15 @@
 Language Syntax
 ***************
 
-Go has three different data structures that allow you to manage collections of data: **arrays**, **slices** and **maps**.
+In this chapter, we dig deeper into the language syntax to explore its components and features.
 
 .. toctree::
    :maxdepth: 1
 
-   language_syntax/names
-   language_syntax/basic_types
+   language_syntax/go_source_file
+   language_syntax/semicolons
+   language_syntax/identifiers
+   language_syntax/declarations
    language_syntax/variables
    language_syntax/struct_types
    language_syntax/pointers
