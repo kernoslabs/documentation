@@ -1,7 +1,7 @@
 Go identifiers
 ==============
 
-*Identifiers* (the names of the entities) are used to name program entities such as packages, constants, variables, types and functions. The following summarizes some attributes about identifiers in Go:
+*Identifiers* (the names of the entities) are used to name program entities such as packages, constants, variables, types and functions for future reference in the code. The following summarizes some attributes about identifiers in Go:
 
 * Identifiers support the Unicode character set
 * The first position of an identifier must be a letter or an underscore::
