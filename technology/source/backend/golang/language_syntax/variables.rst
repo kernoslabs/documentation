@@ -8,25 +8,25 @@ A value’s type provides the compiler two pieces of critical information: first
 The Go language provides these **predeclared types** that are implicitly declared in the universe block:
 
 **Unsigned integers**
-    uint8, uint16, uint32, uint64
+    ``uint8``, ``uint16``, ``uint32``, ``uint64``
 
 **Signed integers**
-    int8, int16, int32, int64
+    ``int8``, ``int16``, ``int32``, ``int64``
 
 **Real Numbers**
-    float32, float64
+    ``float32``, ``float64``
 
 **Boolean**
-    bool
+    ``bool``
 
 **Integers**
-    uint, int, uintptr
+    ``uint``, ``int``, ``uintptr``
 
 **String-related types**
-    string, byte, rune
+    ``string``, ``byte``, ``rune``
 
 **Errors**
-    error
+    ``error``
 
 Many of the previous built-in types are actually telling you both pieces of information, size and representation are part of the type’s name. A value of type ``int64`` requires 8 bytes of memory allocation (64 bits) and represents an IEEE 754 binary decimal. It is telling you everything you need to know about the cost of the variable (Again, *readability* is about understanding the cost of your decision). A ``float32`` requires 4 bytes of memory allocation (32 bits) and represents an IEEE-754 binary floating-point number. A ``bool`` requires 1 byte of memory allocation (8 bits) and represents a boolean value of ``true`` or ``false``. Even though the size is not represented in a boolean variable, you understand its cost (you know it is one byte and you know it represents ``true`` or ``false``)
 
